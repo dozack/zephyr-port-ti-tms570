@@ -1,0 +1,27 @@
+# Copyright (c) 2021 Nordic Semiconductor ASA
+# SPDX-License-Identifier: Apache-2.0
+
+manifest:
+  self:
+    path: zephyr-port-ti-tms570
+  remotes:
+    - name: zephyr-source
+      url-base: https://github.com/dozack
+    - name: hercules-source
+      url-base: https://github.com/stephanosio
+  projects:
+    - name: zephyr
+      remote: zephyr-source
+      revision: main
+      import:
+        name-allowlist:
+          - cmsis
+          - segger
+    - name: hal-hercules
+      path: modules/hal/hal_hercules
+      groups:
+        - hal
+      remote: hercules-source
+      repo-path: hal_ti.git
+      revision: hercules_support
+      
